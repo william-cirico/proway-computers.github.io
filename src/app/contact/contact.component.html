@@ -1,0 +1,74 @@
+<h2 class="contact__title">Entre em contato</h2>
+<section class="contact__container">
+    <form [formGroup]="contactForm" class="contact-form">
+        <input [class.valid]="contactForm.controls['nome'].valid && 
+        (contactForm.controls['nome'].dirty || contactForm.controls['nome'].touched)" type="text"
+            placeholder="Informe o seu nome" formControlName="nome" [class.invalid]="contactForm.controls['nome'].invalid && 
+        (contactForm.controls['nome'].dirty || contactForm.controls['nome'].touched)">
+        <div
+            *ngIf="contactForm.controls['nome'].invalid && (contactForm.controls['nome'].dirty || contactForm.controls['nome'].touched)">
+            <small class="error-message" *ngIf="contactForm.controls['nome'].hasError('minlength')">O campo deve ter no
+                mínimo 6 caracteres</small>
+            <small class="error-message" *ngIf="contactForm.controls['nome'].hasError('required')">Por favor, informe o
+                seu nome</small>
+        </div>
+        <input [class.valid]="contactForm.controls['assunto'].valid && 
+        (contactForm.controls['assunto'].dirty || contactForm.controls['assunto'].touched)" type="text"
+            placeholder="Informe o assunto da mensagem" formControlName="assunto" [class.invalid]="contactForm.controls['assunto'].invalid && 
+        (contactForm.controls['assunto'].dirty || contactForm.controls['assunto'].touched)"
+            placeholder="Assunto do contato" formControlName="assunto">
+        <div
+            *ngIf="contactForm.controls['assunto'].invalid && (contactForm.controls['assunto'].dirty || contactForm.controls['assunto'].touched)">
+            <small class="error-message" *ngIf="contactForm.controls['assunto'].hasError('minlength')">O campo deve ter
+                no mínimo 10 caracteres</small>
+            <small class="error-message" *ngIf="contactForm.controls['assunto'].hasError('required')">Por favor, informe
+                o assunto</small>
+        </div>
+        <input [class.valid]="contactForm.controls['telefone'].valid && 
+            (contactForm.controls['telefone'].dirty || contactForm.controls['telefone'].touched)" [class.invalid]="contactForm.controls['telefone'].invalid && 
+            (contactForm.controls['telefone'].dirty || contactForm.controls['telefone'].touched)" type="text"
+            placeholder="(99) 9 9999-9999" mask="(00) 0 0000-0000" formControlName="telefone">
+        <div
+            *ngIf="contactForm.controls['telefone'].invalid && (contactForm.controls['telefone'].dirty || contactForm.controls['telefone'].touched)">
+            <small class="error-message" *ngIf="contactForm.controls['telefone'].hasError('required')">
+                Por favor, informe o telefone
+            </small>
+            <small class="error-message" *ngIf="contactForm.controls['telefone'].hasError('minlength')">
+                Por favor, informe um telefone válido
+            </small>
+        </div>
+        <input [class.valid]="contactForm.controls['email'].valid && 
+        (contactForm.controls['email'].dirty || contactForm.controls['email'].touched)" [class.invalid]="contactForm.controls['email'].invalid && 
+        (contactForm.controls['email'].dirty || contactForm.controls['email'].touched)" type="text"
+            placeholder="E-mail" formControlName="email">
+        <div
+            *ngIf="contactForm.controls['email'].invalid && (contactForm.controls['email'].dirty || contactForm.controls['email'].touched)">
+            <small class="error-message" *ngIf="contactForm.controls['email'].hasError('required')">
+                Por favor, informe o e-mail
+            </small>
+            <small class="error-message" *ngIf="contactForm.controls['email'].hasError('email')">
+                Por favor, informe um e-mail válido
+            </small>
+        </div>
+        <textarea [class.valid]="contactForm.controls['mensagem'].valid && 
+        (contactForm.controls['mensagem'].dirty || contactForm.controls['mensagem'].touched)" [class.invalid]="contactForm.controls['mensagem'].invalid && 
+        (contactForm.controls['mensagem'].dirty || contactForm.controls['mensagem'].touched)"
+            placeholder="Digite a sua mensagem" maxlength="300" formControlName="mensagem" rows="4"></textarea>
+        <div
+            *ngIf="contactForm.controls['mensagem'].invalid && (contactForm.controls['mensagem'].dirty || contactForm.controls['mensagem'].touched)">
+            <small class="error-message" *ngIf="contactForm.controls['mensagem'].hasError('required')">
+                Por favor, informe a mensagem
+            </small>
+            <small class="error-message" *ngIf="contactForm.controls['mensagem'].hasError('minlength')">
+                Por favor, informe uma mensagem válida
+            </small>
+        </div>
+        <button [disabled]="!contactForm.valid" type="submit">Enviar</button>
+    </form>
+    <address>
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14230.300361031368!2d-49.0703074!3d-26.9169772!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xa5ec9dd8406a6a7!2sProWay!5e0!3m2!1spt-BR!2sbr!4v1647548198490!5m2!1spt-BR!2sbr"
+            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        <p>R. 7 de Setembro, 1600 - 14º andar - Centro, Blumenau - SC, 89010-204</p>
+    </address>
+</section>
